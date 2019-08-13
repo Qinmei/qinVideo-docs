@@ -6,7 +6,7 @@ module.exports = {
   themeConfig: {
     repo: "qinvz/qinvideo",
     editLinks: true,
-    sidebar: "auto",
+    sidebar: ["/docs/", "/section/"],
     editLinkText: "在 GitHub 上编辑此页",
     lastUpdated: "上次更新",
     nav: [
@@ -15,11 +15,11 @@ module.exports = {
         link: "/docs/"
       },
       {
-        text: "视频",
-        link: "/video/"
+        text: "前端演示",
+        link: "http://demo.qinvideo.org"
       },
       {
-        text: "演示",
+        text: "后台演示",
         link: "http://demo.qinvideo.org/qinmei"
       }
     ]
