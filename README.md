@@ -1,7 +1,7 @@
 ---
 home: true
 actionText: 查看说明
-actionLink: /docs/
+actionLink: /page/
 footer: MIT Licensed | Made by Qinvz
 ---
 
