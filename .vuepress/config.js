@@ -1,6 +1,7 @@
 module.exports = {
   plugins: {},
   title: "Qinvideo",
+  dest: "dist",
   description: "一款基于nodejs的动漫CMS系统",
   head: [["link", { rel: "icon", href: `/logo.svg` }]],
   themeConfig: {
