@@ -1,11 +1,11 @@
 # 基本信息
 
+<img :src="$withBase('/logo.svg')" alt="foo" width="120">
+
 ## 系统简介
 
 一套基于 nodejs + mongodb 的前后端分离 CMS 管理系统, 主要包括番剧, 漫画, 文章三大类,
-同时带有评论, 用户, 商品, 弹幕等功能
-
-<img :src="$withBase('/logo.svg')" alt="foo" width="120">
+同时带有评论, 用户, 商品, 弹幕等功能, 可拓展的有高级功能, 包括批量导入以及 Android 客户端
 
 ### 依赖
 
@@ -31,7 +31,7 @@
 - 目前支持直链,解析,m3u8, 直链可设置密钥与过期时间结合 nginx secure link 使用,解析则支持正则匹配
 
 - 数据统计功能, 可以大概的看出历史趋势
-- 弹幕功能, 内部自带弹幕接口, 使用的是 dlilayer 的数据格式, 可无缝使用 dlilayer
+- 弹幕功能, 内部自带弹幕接口, 使用的是 Dplayer 的数据格式, 可无缝使用 Dplayer
 - 支持多季多集, 分类, 评论以及等级限定
 
 ### 漫画
@@ -157,8 +157,8 @@ APP 是使用 react native 制作而成的, 从目前的使用来看, 流畅度�
 
 ## 更新记录
 
-- **2019.10.01** &nbsp;&nbsp;&nbsp;&nbsp;高级功能开发(开发中)
-- **2019.08.15** &nbsp;&nbsp;&nbsp;&nbsp;整体 BUG 修复
+- **2019.09.01** &nbsp;&nbsp;&nbsp;&nbsp;整体 BUG 修复
+- **2019.08.15** &nbsp;&nbsp;&nbsp;&nbsp;高级功能开发(已完成)
 - **2019.07.29** &nbsp;&nbsp;&nbsp;&nbsp;基于 react-native 的 app 开发完成
 - **2019.06.23** &nbsp;&nbsp;&nbsp;&nbsp;移动端主题已经完成
 - **2019.06.01** &nbsp;&nbsp;&nbsp;&nbsp;PC 端主题已经完成
