@@ -26,7 +26,7 @@ module.exports = {
       },
       {
         text: "APP演示",
-        link: "https://qinvideo.org/video/qinvideo.apk"
+        link: "https://qinvideo.org/videos/qinvideo.apk"
       },
     ]
   }
