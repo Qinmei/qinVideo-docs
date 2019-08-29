@@ -1,5 +1,14 @@
 module.exports = {
-  plugins: {},
+  plugins: [
+    "@vuepress/back-to-top",
+    "@vuepress/pwa",
+    [
+      "@vuepress/google-analytics",
+      {
+        ga: "UA-88256229-2" // UA-00000000-0
+      }
+    ]
+  ],
   title: "Qinvideo",
   dest: "dist",
   description: "一款基于nodejs的动漫CMS系统",
@@ -7,7 +16,7 @@ module.exports = {
   themeConfig: {
     repo: "qinvz/qinvideo",
     editLinks: true,
-    sidebar: ["/docs/", "/section/","/api/", "/price/", "/video/"],
+    sidebar: ["/docs/", "/section/", "/api/", "/price/", "/video/"],
     sidebarDepth: 2,
     editLinkText: "在 GitHub 上编辑此页",
     lastUpdated: "上次更新",
@@ -27,7 +36,7 @@ module.exports = {
       {
         text: "APP演示",
         link: "https://qinvideo.org/videos/qinvideo.apk"
-      },
+      }
     ]
   }
 };
