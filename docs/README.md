@@ -111,11 +111,11 @@ location /m {
 }
 
 location =/ {
-    if ($http_user_agent ~* (mobile|nokia|iphone|ipad|android|samsung|htc|blackberry)) }
+    if ($http_user_agent ~* (mobile|nokia|iphone|ipad|android|samsung|htc|blackberry)) {
         rewrite  ^(.*) $scheme://$host/m/ permanent;
     }
 
-    if ($http_user_agent !~* (mobile|nokia|iphone|ipad|android|samsung|htc|blackberry))}
+    if ($http_user_agent !~* (mobile|nokia|iphone|ipad|android|samsung|htc|blackberry)){
       rewrite  ^(.*) $scheme://$host/web/ permanent;
     }
 }
