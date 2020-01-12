@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dev": "vuepress dev .",
-    "build": "vuepress build . && cd dist && echo qinvideo.org > CNAME",
+    "build": "vuepress build .",
     "deploy": "yarn build && gh-pages -d dist"
   },
   "dependencies": {
