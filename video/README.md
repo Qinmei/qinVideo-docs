@@ -1,11 +1,9 @@
 # 视频教程
 
-目前是系统安装的教程, 后续可能会出使用以及自定义的教程
+一些相关的使用教程
 
-## 系统相关
+## 安装
 
-主要是系统使用相关的一些视频
+暂无
 
-### 安装
-
-<video src='https://qinvideo.org/videos/install.mp4' :poster="$withBase('/video.jpg')" controls></video>   
+<!-- <video src='https://qinvideo.org/videos/install.mp4' :poster="$withBase('/video.jpg')" controls></video>    -->
