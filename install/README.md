@@ -46,7 +46,7 @@
     expired: 3600, // redis缓存有效期,单位秒, 一些接口会有缓存数据, 默认是1个小时, 根据自己的实际情况而定, 网站更新不频繁就填长点
 ```
 
-- 填写 OK 之后, 确认 mongodb 跟 redis 都启动了, 然后输入`npm dev`, 看到能够成功启动没有报错就表示没啥问题了, 继续下面的安装;
+- 填写 OK 之后, 确认 mongodb 跟 redis 都启动了, 然后输入`npm run dev`, 看到能够成功启动没有报错就表示没啥问题了, 继续下面的安装;
 
 ## 3. 安装 nginx
 
@@ -127,8 +127,8 @@
 
 ## 4. 运行
 
-- 首先我们需要启动服务端渲染的部分, 进入后台文件的`/public/web`, 输入`npm install`, 安装完成之后, 输入`npm build`, 然后输入`npm start`启动, 注意窗口不能关, 想要后台自动运行可以安装 PM2,命令可参考:`pm2 start npm --name "next" -- start`, 或者简单的就使用 screen 开启窗口
-- 进入后台文件的根目录, 输入`npm tsc`, 等待构建完成后, 再输入`npm start`启动即可, egg.js 自带进程维护, 不用使用 pm2
+- 首先我们需要启动服务端渲染的部分, 进入后台文件的`/public/web`, 输入`npm install`, 安装完成之后, 输入`npm run build`, 然后输入`npm start`启动, 注意窗口不能关, 想要后台自动运行可以安装 PM2,命令可参考:`pm2 start npm --name "next" -- start`, 或者简单的就使用 screen 开启窗口
+- 进入后台文件的根目录, 输入`npm run tsc`, 等待构建完成后, 再输入`npm start`启动即可, egg.js 自带进程维护, 不用使用 pm2
 
 ## 5. 路径
 
@@ -152,6 +152,6 @@
 next 可以直接生成静态文件而不用常驻开启进程, 如果感觉首页都是固定的不需要动态改变, 参考可以参考下面的配置, 生成静态 html 当作首页, 这样不用开启进程, 访问速度也更快;
 
 - 修改`next.config.js`里面的`assetPrefix: "/web"`改为`assetPrefix: "/"`;
-- 输入`npm build`;
-- 输入`npm export`, 需要先开启后台, 否则会打包出错;
+- 输入`npm run build`;
+- 输入`npm run export`, 需要先开启后台, 否则会打包出错;
 - 将生成的`out`文件夹的内容放到 public 的根目录, 然后删除端口 3000 的反向代理, 配置伪静态即可;
