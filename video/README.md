@@ -4,6 +4,4 @@
 
 ## 安装
 
-暂无
-
-<!-- <video src='https://qinvideo.org/videos/install.mp4' :poster="$withBase('/video.jpg')" controls></video>    -->
+<video src='https://qinvideo.org/videos/install.mp4' :poster="$withBase('/video.jpg')" controls></video>
