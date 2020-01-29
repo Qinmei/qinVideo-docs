@@ -32,11 +32,11 @@ module.exports = {
       {
         text: "后台演示",
         link: "http://demo.qinvideo.org/backend"
+      },
+      {
+        text: "APP演示",
+        link: "https://qinvideo.org/videos/qinvideo.apk"
       }
-      // {
-      //   text: "APP演示",
-      //   link: "https://qinvideo.org/videos/qinvideo.apk"
-      // }
     ]
   }
 };
