@@ -16,7 +16,14 @@ module.exports = {
   themeConfig: {
     repo: "qinvz/qinvideo",
     editLinks: true,
-    sidebar: ["/docs/", "/install/", "/section/", "/price/", "/video/"],
+    sidebar: [
+      "/docs/",
+      "/install/",
+      "/section/",
+      "/app/",
+      "/price/",
+      "/video/"
+    ],
     sidebarDepth: 2,
     editLinkText: "在 GitHub 上编辑此页",
     lastUpdated: "上次更新",
