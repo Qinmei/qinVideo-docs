@@ -1,8 +1,12 @@
-# 安装说明
+# 安装更新
+
+由于整体都集合在里面, 所以安装与更新的的步骤可能有些繁琐, 这里做个详细的说明;
+
+## 安装说明
 
 基础环境需要安装 nodejs + mongodb + nginx + redis, 然后下载文件解压, 修改配置文件, 启动即可;
 
-## 1. 安装 mongodb
+### 1. 安装 mongodb
 
 直接安装 mongodb, 然后新建个数据库命名为 qinvideo 或者其他啥的,最好新建个单独的用户来管理该数据库;
 
@@ -10,11 +14,11 @@
 
 如果不需要使用数据库工具链接的话, 可以直接禁止外部访问该端口;
 
-## 2. 安装 redis
+### 2. 安装 redis
 
 宝塔跟 appnode 在软件商店都有 redis, 直接安装即可, 密码啥的看情况设置;
 
-## 3. 安装 nodejs
+### 3. 安装 nodejs
 
 以下的输入都是在终端输入
 
@@ -46,9 +50,10 @@
     expired: 3600, // redis缓存有效期,单位秒, 一些接口会有缓存数据, 默认是1个小时, 根据自己的实际情况而定, 网站更新不频繁就填长点
 ```
 
-- 填写 OK 之后, 确认 mongodb 跟 redis 都启动了, 然后输入`npm run dev`, 看到能够成功启动没有报错就表示没啥问题了, 继续下面的安装;
+- 填写 OK 之后, 确认 mongodb 跟 redis 都启动了;<br />
+  然后输入`npm run dev`, 看到能够成功启动没有报错就表示没啥问题了, 继续下面的安装;
 
-## 3. 安装 nginx
+### 3. 安装 nginx
 
 以下只是参考, 如果有其他的需求自行配置即可
 
@@ -62,11 +67,8 @@
     }
 
     location / {
-        proxy_pass        http://localhost:3000/;
-        proxy_redirect    off;
-        proxy_set_header  Host $host;
-        proxy_set_header  X-Real-IP $remote_addr;
-        proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for;
+        index  /default/index.html;
+        try_files  $uri $uri/ /default/index.html;
     }
 
     client_max_body_size  20M;
@@ -125,33 +127,61 @@
     }
 ```
 
-## 4. 运行
+### 4. 运行
 
-- 首先我们需要启动服务端渲染的部分, 进入后台文件的`/public/web`, 输入`npm install`, 安装完成之后, 输入`npm run build`, 然后输入`npm start`启动, 注意窗口不能关, 想要后台自动运行可以安装 PM2,命令可参考:`pm2 start npm --name "next" -- start`, 或者简单的就使用 screen 开启窗口
-- 进入后台文件的根目录, 输入`npm run tsc`, 等待构建完成后, 再输入`npm start`启动即可, egg.js 自带进程维护, 不用使用 pm2
+- 进入后台文件的根目录, 输入`npm run tsc`, 后台会开始构建;
+- 等待构建完成后, 再输入`npm start`启动即可, 如果报错, 可以尝试`npm start --ignore-stderr`;
+- 如果需要关闭进程, 输入 `npm stop` 即可;
 
-## 5. 路径
+### 5. 设置
 
-如果是按照上面的配置安装, 具体的路径如下:
+进入`域名/backend`, 然后先初始化账号, 然后登录进去, 设置需要保存一次后才会创建配置文件到各个模块;
 
-**管理面板**: web 端域名/backend<br/>
-**web 端首页**: web 端域名<br/>
-**视频首页**: web 端域名/animate<br/>
-**漫画**: web 端域名/comic<br/>
-**文章**: web 端域名/post<br/>
-**搜索**: web 端域名/search<br/>
-**用户中心**: web 端域名/user<br/>
-**移动端**:移动端域名<br/>
+### 6. 服务端渲染
 
-由于做了相互跳转, 所以移动端无法访问 web 端的内容, 根据实际情况可以自行调整, 每个页面都访问下确认 OK 即可;
+- 服务端渲染是后台直出页面, 访问速度上会快上一点, 目前也只有首页, 如果需要可以按照下面的步骤使用;
+- 进入后台文件的`/public/web`, 输入`npm install`安装;
+- 安装完成之后, 输入`npm run build`, 开始构建, 后续重新构建前需要先删除\_next 文件夹;
+- 然后输入`npm start`启动, 可以访问`域名:3000`测试是否成功启动, 这个时候样式是错乱的;
+- 安装 PM2(宝塔之前已经安装了), 然后使用命令:`pm2 start npm --name "next" -- start`, 后台常驻进程
+- 修改 nginx 的配置文件, 将找到下面第一个的内容替换成第二个;
 
-另外需要先在后台修改设置, 保存的时候会生成配置文件到所有的模块下
+```apacheconf
+    location / {
+        index  /default/index.html;
+        try_files  $uri $uri/ /default/index.html;
+    }
+```
 
-## 6. 额外
+```apacheconf
+    location / {
+        proxy_pass        http://localhost:3000/;
+        proxy_redirect    off;
+        proxy_set_header  Host $host;
+        proxy_set_header  X-Real-IP $remote_addr;
+        proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+```
 
-next 可以直接生成静态文件而不用常驻开启进程, 如果感觉首页都是固定的不需要动态改变, 参考可以参考下面的配置, 生成静态 html 当作首页, 这样不用开启进程, 访问速度也更快;
+## 更新说明
 
-- 修改`next.config.js`里面的`assetPrefix: "/web"`改为`assetPrefix: "/"`;
-- 输入`npm run build`;
-- 输入`npm run export`, 需要先开启后台, 否则会打包出错;
-- 将生成的`out`文件夹的内容放到 public 的根目录, 然后删除端口 3000 的反向代理, 配置伪静态即可;
+更新的话, 可以按照下面的情况来更新对应的部分;
+
+### 1.全部更新
+
+- 先下载文件到新的目录;
+- 复制 config/config.default.js 到新的目录;
+- 复制 public/img 到新的目录
+- 关闭之前的进程, 然后再新的目录启动进程即可;
+
+### 2.只更新静态文件
+
+- 下载新的文件并解压;
+- 复制 public 里面的对应的模块文件过来即可;
+- 如果是 web 里面的, 需要先关闭进程, 然后删除\_next 文件, 重新运行`npm run build`构建;
+
+### 3. 只更新后台
+
+- 下载新的文件并解压;
+- 复制 app 里面的文件过来, 并删除旧的 app 目录;
+- 关闭旧的进程, 运行`npm run tsc`, 然后启动新的进程
