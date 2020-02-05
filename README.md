@@ -12,6 +12,6 @@ home: true
   <div class="list">
     <router-link to="/docs/" class="action-button">使用文档</router-link>
      <a class='link-button' href='http://demo.qinvideo.org'>前端演示</a>
-     <a class='link-button' href='http://demo.qinvideo.org/qinmei'>后端演示</a>
+     <a class='link-button' href='http://demo.qinvideo.org/backend'>后端演示</a>
   </div>
 </div>
