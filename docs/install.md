@@ -61,7 +61,7 @@
 - 然后创建 web 端静态网站, 网站的程序目录需要指向上面文件目录 的 public 文件夹;
 - 在网站的配置文件里面加上以下的代码, 注意不要冲突了,注意第二行的重定向地址需要改成自己的移动端, 然后重启 nginx 即可;
 
-```apacheconf
+```apacheconf {2}
     if ($http_user_agent ~* (mobile|nokia|iphone|ipad|android|samsung|htc|blackberry)) {
         rewrite  ^(.*) $scheme://m.demo.qinvideo.org permanent;
     }
@@ -107,9 +107,9 @@
 ```
 
 - 然后创建 移动端 静态网站, 网站的程序目录需要指向上面后台文件目录 的 public 文件夹;
-- 在网站的配置文件里面加上以下的代码, 注意不要冲突了, 注意第三行的重定向地址需要改成自己的 web 端, 然后重启 nginx 即可;
+- 在网站的配置文件里面加上以下的代码, 注意不要冲突了, 注意第三行的重定向地址需要改成自己的 web 端, 然后重启 nginx 即可, 当然如果不想要手动端网站跳转的话删除第 2,3,4 行
 
-```apacheconf
+```apacheconf {3}
    location / {
         if ($http_user_agent !~* (mobile|nokia|iphone|ipad|android|samsung|htc|blackberry)) {
             rewrite  ^(.*) $scheme://demo.qinvideo.org permanent;

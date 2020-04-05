@@ -16,14 +16,7 @@ module.exports = {
   themeConfig: {
     repo: "qinvz/qinvideo",
     editLinks: true,
-    sidebar: [
-      "/docs/",
-      "/install/",
-      "/section/",
-      "/app/",
-      "/price/",
-      "/video/"
-    ],
+    sidebar: ["/docs/", "/install/", "/section/", "/video/"],
     sidebarDepth: 2,
     editLinkText: "在 GitHub 上编辑此页",
     lastUpdated: "上次更新",
@@ -33,17 +26,21 @@ module.exports = {
         link: "/docs/"
       },
       {
+        text: "视频教程",
+        link: "/video/"
+      },
+      {
         text: "前端演示",
         link: "http://demo.qinvideo.org"
       },
       {
         text: "后台演示",
         link: "http://demo.qinvideo.org/backend"
-      },
-      {
-        text: "APP演示",
-        link: "https://qinvideo.org/videos/qinvideo.apk"
       }
-    ]
+    ],
+    sidebar: {
+      "/docs/": ["", "install", "section"],
+      "/video/": ["", "source"]
+    }
   }
 };

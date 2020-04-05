@@ -57,5 +57,13 @@
 
 ## 更新记录
 
-- **2020.01.21** &nbsp;&nbsp;&nbsp;&nbsp;2.0 正式版发布
-- **2019.10.01** &nbsp;&nbsp;&nbsp;&nbsp;1.0 正式版发布
+- **2020.04.05** &nbsp;&nbsp;&nbsp;&nbsp; v2.0.8 采集的番剧在保存时会自动创建分类, 提高某些耗时接口的缓存为 1 天;
+- **2020.03.08** &nbsp;&nbsp;&nbsp;&nbsp; v2.0.7 一些使用 BUG 的修复;
+- **2020.02.28** &nbsp;&nbsp;&nbsp;&nbsp; v2.0.6 批量新增剧集, 支持苹果 CMS 的格式;
+- **2020.02.20** &nbsp;&nbsp;&nbsp;&nbsp; v2.0.5 字幕以及清晰度的切换;
+- **2020.02.04** &nbsp;&nbsp;&nbsp;&nbsp; v2.0.4 用户删除之后的处理;
+- **2020.02.04** &nbsp;&nbsp;&nbsp;&nbsp; v2.0.3 首页渲染等 BUG 修复;
+- **2020.02.02** &nbsp;&nbsp;&nbsp;&nbsp; v2.0.2 关于我们, 播放等 BUG 修复;
+- **2020.01.29** &nbsp;&nbsp;&nbsp;&nbsp; v2.0.1 新增前端用户评分的功能;
+- **2020.01.21** &nbsp;&nbsp;&nbsp;&nbsp; v2.0.0 正式版发布;
+- **2019.10.01** &nbsp;&nbsp;&nbsp;&nbsp; v1.0.0 正式版发布;
