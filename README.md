@@ -7,7 +7,7 @@ home: true
 </div>
 
 <div class="content">
-  <h1 class='title'>Qin Video</h1>
+  <h1 class='titleText'>Qin Video</h1>
   <p class='info'>基于nodejs的动漫CMS系统</p>
   <div class="list">
     <router-link to="/docs/" class="action-button">使用文档</router-link>
