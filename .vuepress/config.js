@@ -52,7 +52,7 @@ module.exports = {
       },
     ],
     sidebar: {
-      "/docs/": ["", "install", "section"],
+      "/docs/": ["", "install", "section", "performance"],
       "/video/": ["", "source"],
     },
   },
