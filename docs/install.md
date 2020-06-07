@@ -173,7 +173,7 @@
 ### 1.全部更新
 
 - 先下载文件到新的目录;
-- 复制 config/config.default.js 到新的目录;
+- 复制 config/config.default.ts 到新的目录;
 - 复制 public/img 到新的目录
 - 关闭之前的进程, 然后再新的目录启动进程即可;
 
