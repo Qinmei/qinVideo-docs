@@ -45,9 +45,12 @@
             options: {},
         },
     },
-    salt: 'qinmei', // 密码盐值, 需要修改为一个随机的字符串, 如果想要从1.0导入用户数据进来, 就填写一样的
-    tokenSecret: 'qinmei', // 登录密钥, 这个同上
-    expired: 3600, // redis缓存有效期,单位秒, 一些接口会有缓存数据, 默认是1个小时, 根据自己的实际情况而定, 网站更新不频繁就填长点
+        authUrl: 'https://m.qinmei.video/auth/verify', // 邮件验证账户的地址, 为了防止相互跳转, 建议将移动端跳转到web的代码去掉
+        salt: 'qinmei', // 密码盐值
+        tokenSecret: 'qinmei', // 登录密钥
+        expired: 600, // redis缓存有效期, 是个随机数, 如果是3600, 那么会在3600~7200之间, 即一到两倍之间, 从V2.2.0版本开始,数值不用太大
+        expiredCount: 100, // 接口缓存写入数据库的数量, 主要是为了避免频繁写入数据库, 影响性能
+        caculateCount: 100, // 评论播放等统计接口的计算缓存量, 也是为了性能, 不过会造成计数延迟, 如果需要实时计数, 改成1即可
 ```
 
 - 填写 OK 之后, 确认 mongodb 跟 redis 都启动了;<br />
@@ -170,7 +173,7 @@
 ### 1.全部更新
 
 - 先下载文件到新的目录;
-- 复制 config/config.default.js 到新的目录;
+- 复制 config/config.default.ts 到新的目录;
 - 复制 public/img 到新的目录
 - 关闭之前的进程, 然后再新的目录启动进程即可;
 
