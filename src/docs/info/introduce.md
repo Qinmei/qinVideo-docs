@@ -1,10 +1,6 @@
-# 基本信息
-
-<img :src="$withBase('/logo.svg')" alt="foo" width="120">
-
 ## 系统简介
 
-一套基于 nodejs + mongodb 的前后端分离 CMS 管理系统, 主要的技术栈为:egg.js + mongoose + redis;
+本系统是一套基于 nodejs + mongodb 的前后端分离 CMS 管理系统, 主要的技术栈为:egg.js + mongoose + redis;
 
 功能模块主要包括番剧, 漫画, 文章, 博客四大类,
 同时带有评论, 用户, 商品, 激活码, 弹幕等功能, 此外对苹果 CMS 的接口做了兼容, 可以批量导入资源站的内容,实现快速建站;

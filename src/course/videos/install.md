@@ -4,4 +4,4 @@
 
 此外, 视频有一定的延迟性, 不能保证最新的版本一定能顺利安装, 所以仅作参考, 需要先行查看文档然后对比安装;
 
-<video src='https://qinvideo.org/videos/install.mp4' :poster="$withBase('/video.jpg')" controls></video>
+<code src="../../components/videos/install.tsx" inline />

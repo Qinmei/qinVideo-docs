@@ -1,8 +1,4 @@
-# 安装更新
-
-由于整体都集合在里面, 所以安装与更新的的步骤可能有些繁琐, 这里做个详细的说明;
-
-## 安装说明
+## 安装
 
 基础环境需要安装 nodejs + mongodb + nginx + redis, 然后下载文件解压, 修改配置文件, 启动即可;
 
@@ -25,8 +21,9 @@
 - 宝塔一键安装 node， appnode 在软件管家搜索 nodejs 即可;
 - 安装完之后输入`node -v`, 如果看版本信息代表安装成功;
 - 输入`npm -v`, 一般来说上面的 OK 了, 这步也会有版本信息, 主要是确认下;
+- 输入`npm i -g yarn`, 安装`yarn`包管理工具;
 - 下载 [程序压缩包](https://github.com/Qinmei/qinVideo/archive/2.0.zip) 到服务器, 然后找个文件夹解压;
-- 进入解压后的目录, 也就是里面有 package.json 这一层的目录, 输入`npm install`, 等待安装完成;
+- 进入解压后的目录, 也就是里面有 package.json 这一层的目录, 输入`yarn`, 等待安装完成;
 - 打开并编辑`config/config.default.js`, 我们需要修改里面带有标注的几项:
 
 ```js
@@ -54,7 +51,7 @@
 ```
 
 - 填写 OK 之后, 确认 mongodb 跟 redis 都启动了;<br />
-  然后输入`npm run dev`, 看到能够成功启动没有报错就表示没啥问题了, 继续下面的安装;
+  然后输入`yarn dev`, 看到能够成功启动没有报错就表示没啥问题了, 继续下面的安装;
 
 ### 3. 安装 nginx
 
@@ -64,7 +61,7 @@
 - 然后创建 web 端静态网站, 网站的程序目录需要指向上面文件目录 的 public 文件夹;
 - 在网站的配置文件里面加上以下的代码, 注意不要冲突了,注意第二行的重定向地址需要改成自己的移动端, 然后重启 nginx 即可;
 
-```apacheconf {2}
+```apacheconf
     if ($http_user_agent ~* (mobile|nokia|iphone|ipad|android|samsung|htc|blackberry)) {
         rewrite  ^(.*) $scheme://m.demo.qinvideo.org permanent;
     }
@@ -132,59 +129,6 @@
 
 ### 4. 运行
 
-- 进入后台文件的根目录, 输入`npm run tsc`, 后台会开始构建;
-- 等待构建完成后, 再输入`npm start`启动即可, 如果报错, 可以尝试`npm start --ignore-stderr`;
-- 如果需要关闭进程, 输入 `npm stop` 即可;
-
-### 5. 设置
-
-进入`域名/backend`, 然后先初始化账号, 然后登录进去, 设置需要保存一次后才会创建配置文件到各个模块;
-
-### 6. 服务端渲染
-
-- 服务端渲染是后台直出页面, 访问速度上会快上一点, 目前也只有首页, 如果需要可以按照下面的步骤使用;
-- 进入后台文件的`/public/web`, 输入`npm install`安装;
-- 安装完成之后, 输入`npm run build`, 开始构建, 后续重新构建前需要先删除\_next 文件夹;
-- 然后输入`npm start`启动, 可以访问`域名:3000`测试是否成功启动, 这个时候样式是错乱的;
-- 安装 PM2(宝塔之前已经安装了), 然后使用命令:`pm2 start npm --name "next" -- start`, 后台常驻进程
-- 修改 nginx 的配置文件, 将找到下面第一个的内容替换成第二个;
-
-```apacheconf
-    location / {
-        index  /default/index.html;
-        try_files  $uri $uri/ /default/index.html;
-    }
-```
-
-```apacheconf
-    location / {
-        proxy_pass        http://localhost:3000/;
-        proxy_redirect    off;
-        proxy_set_header  Host $host;
-        proxy_set_header  X-Real-IP $remote_addr;
-        proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for;
-    }
-```
-
-## 更新说明
-
-更新的话, 可以按照下面的情况来更新对应的部分;
-
-### 1.全部更新
-
-- 先下载文件到新的目录;
-- 复制 config/config.default.ts 到新的目录;
-- 复制 public/img 到新的目录
-- 关闭之前的进程, 然后再新的目录启动进程即可;
-
-### 2.只更新静态文件
-
-- 下载新的文件并解压;
-- 复制 public 里面的对应的模块文件过来即可;
-- 如果是 web 里面的, 需要先关闭进程, 然后删除\_next 文件, 重新运行`npm run build`构建;
-
-### 3. 只更新后台
-
-- 下载新的文件并解压;
-- 复制 app 里面的文件过来, 并删除旧的 app 目录;
-- 关闭旧的进程, 运行`npm run tsc`, 然后启动新的进程
+- 进入后台文件的根目录, 输入`yarn tsc`, 后台会开始构建;
+- 等待构建完成后, 再输入`yarn start`启动即可, 如果报错, 可以尝试`yarn start --ignore-stderr`;
+- 如果需要关闭进程, 输入 `yarn stop` 即可;
