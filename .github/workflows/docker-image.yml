@@ -28,3 +28,8 @@ jobs:
         with:
           push: true
           tags: qinvideo/qinvideo-docs:latest
+      - 
+        name: curl
+        uses: wei/curl@v1
+        with:
+          args: --insecure -u ${{secrets.RANCHER_TOKEN}} -X POST -H 'Content-Type:application/json' ${{secrets.RANCHER_API}}/v3/project/c-jk8df:p-zkthp/workloads/deployment:default:qinvideo-docs?action=redeploy
